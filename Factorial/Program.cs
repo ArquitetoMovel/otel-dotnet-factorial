@@ -1,7 +1,19 @@
-using System;
+using System.Diagnostics;
+using OpenTelemetry;
+using OpenTelemetry.Trace;
 
-static int Factorial(int number)
+var serviceName = "factorial-app";
+
+Sdk.CreateTracerProviderBuilder()
+    .AddSource(serviceName)
+    .AddConsoleExporter()
+    .Build();
+
+var activitySource = new ActivitySource(serviceName, "1.0");
+
+int Factorial(int number)
 {
+    using var calFct = activitySource?.StartActivity("calc_fator");
     if (number == 0 || number == 1)
     {
         return 1;
@@ -12,7 +24,8 @@ static int Factorial(int number)
 
 try
 {
-    int number = int.Parse(args[0]);
+
+    int number =  5;//int.Parse(args[0]);
     int factorial = Factorial(number);
 
     Console.WriteLine($"Factorial of {number} is {factorial}");
