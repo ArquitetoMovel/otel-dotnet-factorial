@@ -1,15 +1,25 @@
 using System.Diagnostics;
 using OpenTelemetry;
+using OpenTelemetry.Resources;
 using OpenTelemetry.Trace;
 
-var serviceName = "factorial-app";
+const string serviceName = "factorial-app";
+const string serviceVersion = "1.0";
 
+ActivitySource activitySource = new(serviceName, serviceVersion);
+
+var resourceBuilder = 
+    ResourceBuilder.CreateDefault()
+    .AddService(serviceName, "net.alexandre", serviceVersion);
+    
 Sdk.CreateTracerProviderBuilder()
+    .SetResourceBuilder(resourceBuilder)
     .AddSource(serviceName)
-    .AddConsoleExporter()
-    .Build();
-
-var activitySource = new ActivitySource(serviceName, "1.0");
+    .AddOtlpExporter(otlpExporter => {
+        otlpExporter.Endpoint = new Uri("http://localhost:9317");
+        otlpExporter.Protocol = OpenTelemetry.Exporter.OtlpExportProtocol.Grpc;
+    })
+     .Build();
 
 int Factorial(int number)
 {
@@ -19,13 +29,15 @@ int Factorial(int number)
         return 1;
     }
 
+    calFct?.AddTag("currentNumber", number.ToString());
+
     return number * Factorial(number - 1);
 }
 
 try
 {
 
-    int number =  5;//int.Parse(args[0]);
+    int number =  int.Parse(args[0]);
     int factorial = Factorial(number);
 
     Console.WriteLine($"Factorial of {number} is {factorial}");
@@ -33,4 +45,15 @@ try
 catch (Exception ex)
 {
     Console.WriteLine("Invalid input. Please enter a valid integer."+ex.Message);
+}
+Console.WriteLine(">>> press q to exit <<<");
+
+while (true)
+{
+    if (Console.ReadKey().KeyChar == 'q')
+    {
+        break;
+    } else {
+        await Task.Delay(100);
+    }
 }

@@ -1,9 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "Hn2oDuw80tM=",
+  "dgSpecHash": "WPh0Z8iB1QY=",
   "success": true,
   "projectFilePath": "/Users/alexandre/Developer/otel-dotnet-factorial/Factorial/Factorial.csproj",
   "expectedPackageFiles": [
+    "/Users/alexandre/.nuget/packages/google.protobuf/3.22.5/google.protobuf.3.22.5.nupkg.sha512",
+    "/Users/alexandre/.nuget/packages/grpc.core.api/2.52.0/grpc.core.api.2.52.0.nupkg.sha512",
+    "/Users/alexandre/.nuget/packages/grpc.net.client/2.52.0/grpc.net.client.2.52.0.nupkg.sha512",
+    "/Users/alexandre/.nuget/packages/grpc.net.common/2.52.0/grpc.net.common.2.52.0.nupkg.sha512",
     "/Users/alexandre/.nuget/packages/microsoft.extensions.configuration/9.0.0-rc.1.24431.7/microsoft.extensions.configuration.9.0.0-rc.1.24431.7.nupkg.sha512",
     "/Users/alexandre/.nuget/packages/microsoft.extensions.configuration.abstractions/9.0.0-rc.1.24431.7/microsoft.extensions.configuration.abstractions.9.0.0-rc.1.24431.7.nupkg.sha512",
     "/Users/alexandre/.nuget/packages/microsoft.extensions.configuration.binder/9.0.0-rc.1.24431.7/microsoft.extensions.configuration.binder.9.0.0-rc.1.24431.7.nupkg.sha512",
@@ -20,7 +24,9 @@
     "/Users/alexandre/.nuget/packages/opentelemetry.api/1.10.0-beta.1/opentelemetry.api.1.10.0-beta.1.nupkg.sha512",
     "/Users/alexandre/.nuget/packages/opentelemetry.api.providerbuilderextensions/1.10.0-beta.1/opentelemetry.api.providerbuilderextensions.1.10.0-beta.1.nupkg.sha512",
     "/Users/alexandre/.nuget/packages/opentelemetry.exporter.console/1.10.0-beta.1/opentelemetry.exporter.console.1.10.0-beta.1.nupkg.sha512",
-    "/Users/alexandre/.nuget/packages/system.diagnostics.diagnosticsource/9.0.0-rc.1.24431.7/system.diagnostics.diagnosticsource.9.0.0-rc.1.24431.7.nupkg.sha512"
+    "/Users/alexandre/.nuget/packages/opentelemetry.exporter.opentelemetryprotocol/1.10.0-beta.1/opentelemetry.exporter.opentelemetryprotocol.1.10.0-beta.1.nupkg.sha512",
+    "/Users/alexandre/.nuget/packages/system.diagnostics.diagnosticsource/9.0.0-rc.1.24431.7/system.diagnostics.diagnosticsource.9.0.0-rc.1.24431.7.nupkg.sha512",
+    "/Users/alexandre/.nuget/packages/system.memory/4.5.3/system.memory.4.5.3.nupkg.sha512"
   ],
   "logs": []
 }
