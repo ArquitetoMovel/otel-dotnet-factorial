@@ -4,6 +4,9 @@ using OpenTelemetry.Resources;
 using OpenTelemetry.Trace;
 using Microsoft.Extensions.Logging;
 using OpenTelemetry.Logs;
+using OpenTelemetry.Metrics;
+using System.Diagnostics.Metrics;
+using System.Globalization;
 
 const string serviceName = "factorial-app";
 const string serviceVersion = "1.0";
@@ -35,29 +38,43 @@ using ILoggerFactory factory = LoggerFactory.Create(builder =>
     });
 });
 
-ILogger logger = factory.CreateLogger("Program");
+Sdk.CreateMeterProviderBuilder()
+    .SetResourceBuilder(resourceBuilder)
+    .AddOtlpExporter(otlpExporter => {
+        otlpExporter.Endpoint = new Uri("http://localhost:9317");
+        otlpExporter.Protocol = OpenTelemetry.Exporter.OtlpExportProtocol.Grpc;
+    })
+    .AddMeter("Factorial.Total")
+    .SetMaxMetricStreams(1)
+    .Build();
 
-int Factorial(int number)
+var logger = factory.CreateLogger("Program");
+
+Meter sMeter = new("Factorial.Total", "1.0.0");
+var totalCallsCounter = sMeter.CreateCounter<int>("total_calcs", "Total number of calls");
+
+float Factorial(float number)
 {
-    using var calFct = activitySource?.StartActivity("calc_fator");
-    if (number == 0 || number == 1)
+    var activityFuncFactorName = "calc_fator";
+    using var calFct = activitySource?.StartActivity(activityFuncFactorName);
+    totalCallsCounter.Add(1);
+    if (number is 0 or 1)
     {
         return 1;
     }
-
-    calFct?.AddTag("currentNumber", number.ToString());
-
+    calFct?.AddTag("currentNumber", number.ToString(CultureInfo.InvariantCulture));
     return number * Factorial(number - 1);
 }
 
 try
 {
-
-    int number =  int.Parse(args[0]);
-    int factorial = Factorial(number);
-
-    logger.LogInformation("Factorial of {Number} is {Factorial}", number, factorial);
-    Console.WriteLine($"Factorial of {number} is {factorial}");
+    var number =  int.Parse(args[0]);
+    for(var n=number; n <= number; n--) {
+      var factorial = Factorial(n);
+      logger.LogInformation("Factorial of {Number} is {Factorial}", n, factorial);
+      Console.WriteLine($"Factorial of {n} is {factorial}");
+      await Task.Delay(5_000);
+    }
 }
 catch (Exception ex)
 {
