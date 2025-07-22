@@ -12,3 +12,4 @@
 /Users/alexandre/Developer/otel-dotnet-factorial/Factorial/obj/Debug/net8.0/Factorial.pdb
 /Users/alexandre/Developer/otel-dotnet-factorial/Factorial/obj/Debug/net8.0/Factorial.genruntimeconfig.cache
 /Users/alexandre/Developer/otel-dotnet-factorial/Factorial/obj/Debug/net8.0/ref/Factorial.dll
+/Users/alexandre/Developer/otel-dotnet-factorial/Factorial/obj/Debug/net8.0/Factorial.sourcelink.json
