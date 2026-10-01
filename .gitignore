@@ -1,1 +1,3 @@
-Factorial/bin/Debug/net8.0/*.dll
+# Artefatos de compilação e restauração NuGet
+**/bin/
+**/obj/

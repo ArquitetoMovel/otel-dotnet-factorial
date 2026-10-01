@@ -4,16 +4,16 @@ using OpenTelemetry.Trace;
 
 var serviceName = "factorial-app";
 
-Sdk.CreateTracerProviderBuilder()
+using var tracerProvider = Sdk.CreateTracerProviderBuilder()
     .AddSource(serviceName)
     .AddConsoleExporter()
     .Build();
 
-var activitySource = new ActivitySource(serviceName, "1.0");
+using var activitySource = new ActivitySource(serviceName, "1.0");
 
 int Factorial(int number)
 {
-    using var calFct = activitySource?.StartActivity("calc_fator");
+    using var calFct = activitySource.StartActivity("calc_fator");
     if (number == 0 || number == 1)
     {
         return 1;
