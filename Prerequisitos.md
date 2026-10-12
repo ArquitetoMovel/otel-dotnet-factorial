@@ -14,7 +14,7 @@ Ferramentas sob a licença Apache 2.0 são de código aberto e de uso gratuito.
 
 ### Outras Licenças (Proprietárias/Comerciais)
 
--   **[.NET 9.0 SDK](https://dotnet.microsoft.com/download/dotnet/9.0)**: O kit de desenvolvimento de software .NET é necessário para construir e executar a aplicação. (Licença Microsoft)
+-   **[.NET 10.0 SDK](https://dotnet.microsoft.com/download/dotnet/10.0)**: O kit de desenvolvimento de software .NET é necessário para construir e executar a aplicação. (Licença Microsoft)
 -   **[Visual Studio Code](https://code.visualstudio.com/)**: Um editor de código-fonte leve, mas poderoso, que roda em seu desktop e está disponível para Windows, macOS e Linux. (Licença Microsoft)
 -   **[Seq](https://datalust.co/seq)**: Um servidor de log para .NET que facilita a captura, busca, análise e alerta sobre dados de log estruturados. (Comercial, com uma camada gratuita para uso individual)
 
