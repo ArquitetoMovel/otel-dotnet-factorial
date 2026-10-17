@@ -13,7 +13,7 @@ Este é um simples aplicativo de console .NET que calcula o fatorial de um núme
 
 ## Pré-requisitos
 
-- [.NET 9.0 SDK](https://dotnet.microsoft.com/download/dotnet/9.0) ou superior.
+- [.NET 10.0 SDK](https://dotnet.microsoft.com/download/dotnet/10.0) ou superior.
 - Um coletor OpenTelemetry (ou qualquer backend compatível com OTLP) em execução e ouvindo no endpoint gRPC `http://localhost:9317`.
 
 ## Como Executar
@@ -55,7 +55,7 @@ Todos os dados de telemetria são enriquecidos com metadados do serviço (`servi
 
 O projeto utiliza os seguintes pacotes NuGet para a funcionalidade do OpenTelemetry:
 
--   `OpenTelemetry` (1.12.0)
--   `OpenTelemetry.Api` (1.12.0)
--   `OpenTelemetry.Exporter.Console` (1.12.0)
--   `OpenTelemetry.Exporter.OpenTelemetryProtocol` (1.12.0)
+-   `OpenTelemetry` (1.19.1)
+-   `OpenTelemetry.Api` (1.19.1)
+-   `OpenTelemetry.Exporter.Console` (1.19.1)
+-   `OpenTelemetry.Exporter.OpenTelemetryProtocol` (1.19.1)
